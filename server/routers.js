@@ -7,6 +7,7 @@ let hrefs = [
     'getYcList',
     'getFcList',
     'getSongListSquareRecommended',
+    'getSongUrl',
 ];
 hrefs.forEach(href => {
     router.get(`/${href}`, require('./controllers')(href))

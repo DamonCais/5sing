@@ -80,6 +80,15 @@ function getSongListSquareRecommended(obj) {
     })
 }
 
+function getSongUrl(obj) {
+    return doGet('/song/getsongurl', {
+        songid: obj.songid,
+        songtype: obj.songtype,
+        from: 'web',
+        version: '6.6.72',
+        _: new Date().getTime()
+    })
+}
 
 module.exports = {
     getRecommendSongList,
@@ -88,4 +97,5 @@ module.exports = {
     getYcList,
     getFcList,
     getSongListSquareRecommended,
+    getSongUrl
 }

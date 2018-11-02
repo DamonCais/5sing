@@ -26,12 +26,11 @@ function getFullUrl(url, params) {
 }
 
 (async () => {
-    let res = await doGet('/h5/webRecommendNew', {
-        p: 2,
-        t: 1,
-        l: 10,
-        s: '编辑推荐',
+    let res = await doGet('/song/getsongurl', {
+        songid: obj.songid,
+        songtype: obj.songtype,
         from: 'web',
+        version: '6.6.72',
         _: new Date().getTime()
     })
     console.log(res.data);
@@ -55,3 +54,5 @@ function getFullUrl(url, params) {
 
 // 视频
 // http://service.5sing.kugou.com/h5/mvlist?jsoncallback=jQuery21409230696795689353_1541128111899&type=2&_=1541128111900
+
+// http://service.5sing.kugou.com/song/getsongurl?songid=${arr[a]}&songtype=fc&from=web&version=6.6.72&_=${new Date().getTime()}
