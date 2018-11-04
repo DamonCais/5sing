@@ -1,0 +1,8 @@
+<template name="4024d4ba">
+  <view class="_div data-v-5c7f672f fc">
+    <view class="_h4 data-v-5c7f672f">推荐音乐</view>
+    <view wx:key="i" key="{{i}}" class="_div data-v-5c7f672f fc-item" wx:for="{{fcList}}" wx:for-index="i" wx:for-item="fc"><text class="_text data-v-5c7f672f fc-index">{{i}}</text>
+        <image src="{{fc.singerImage}}" alt class="_img data-v-5c7f672f"></image>
+        <view class="_div data-v-5c7f672f fc-info"><text class="_text data-v-5c7f672f fc-name">{{fc.songName}}</text> <text class="_text data-v-5c7f672f fc-singer">{{fc.singer}}</text></view> <text class="_text data-v-5c7f672f fc-rq">{{fc.rqNum}}</text></view>
+  </view>
+</template>

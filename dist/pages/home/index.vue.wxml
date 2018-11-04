@@ -1,0 +1,23 @@
+<template name="56e8b545">
+  <view class="_div data-v-5f9d8311 home">
+    <swiper indicator-dots="{{true}}" indicator-color="#EA5A49" autoplay="{{true}}" interval="{{4000}}" duration="{{1000}}" circular="{{true}}" class="_swiper data-v-5f9d8311">
+      <block wx:key="i" key="{{i}}" wx:for="{{bannerList}}" wx:for-index="i" wx:for-item="b">
+        <swiper-item class="_swiper-item data-v-5f9d8311">
+          <image class="_img data-v-5f9d8311 swiper-image" src="{{b.thumb}}" alt></image>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="_h4 data-v-5f9d8311">推荐歌单</view>
+    <view class="_div data-v-5f9d8311 recommend-list">
+      <view class="_div data-v-5f9d8311 recommend-item" bindtap="handleProxy" wx:key="i" key="{{i}}" data-eventid="{{'0-'+i}}" data-comkey="{{$k}}" wx:for="{{recommendSongList}}" wx:for-index="i" wx:for-item="r">
+        <image src="{{r.Picture}}" alt class="_img data-v-5f9d8311"></image> <text class="_text data-v-5f9d8311">{{r.Title}}</text>
+      </view>
+    </view>
+    <view class="_h4 data-v-5f9d8311">精选推荐</view>
+    <view class="_div data-v-5f9d8311 recommend-list">
+      <view class="_div data-v-5f9d8311 recommend-item" bindtap="handleProxy" wx:key="i" key="{{i}}" data-eventid="{{'1-'+i}}" data-comkey="{{$k}}" wx:for="{{songList}}" wx:for-index="i" wx:for-item="r">
+        <image src="{{r.Picture}}" alt class="_img data-v-5f9d8311"></image> <text class="_text data-v-5f9d8311">{{r.Title}}</text>
+      </view>
+    </view>
+  </view>
+</template>

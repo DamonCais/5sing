@@ -1,0 +1,47 @@
+
+.yc ._h4.data-v-22a2a588 {
+  font-size: 36rpx;
+  padding-left: 20rpx;
+  border-left: 10rpx solid greenyellow;
+}
+.yc .yc-item.data-v-22a2a588 {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+}
+.yc .yc-item .yc-index.data-v-22a2a588 {
+  width: 100rpx;
+  text-align: center;
+}
+.yc .yc-item ._img.data-v-22a2a588 {
+  width: 100rpx;
+  height: 100rpx;
+}
+.yc .yc-item .yc-info.data-v-22a2a588 {
+  width: 445rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  overflow: hidden;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+.yc .yc-item .yc-info .yc-name.data-v-22a2a588 {
+  overflow: hidden;
+  display: block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.yc .yc-item .yc-info .yc-singer.data-v-22a2a588 {
+  font-size: 24rpx;
+  overflow: hidden;
+  display: block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #999;
+}
+.yc .yc-item .yc-rq.data-v-22a2a588 {
+  width: 130rpx;
+}

@@ -1,0 +1,47 @@
+
+.fc ._h4.data-v-5c7f672f {
+  font-size: 36rpx;
+  padding-left: 20rpx;
+  border-left: 10rpx solid greenyellow;
+}
+.fc .fc-item.data-v-5c7f672f {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+}
+.fc .fc-item .fc-index.data-v-5c7f672f {
+  width: 100rpx;
+  text-align: center;
+}
+.fc .fc-item ._img.data-v-5c7f672f {
+  width: 100rpx;
+  height: 100rpx;
+}
+.fc .fc-item .fc-info.data-v-5c7f672f {
+  width: 445rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  overflow: hidden;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+.fc .fc-item .fc-info .fc-name.data-v-5c7f672f {
+  overflow: hidden;
+  display: block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.fc .fc-item .fc-info .fc-singer.data-v-5c7f672f {
+  font-size: 24rpx;
+  overflow: hidden;
+  display: block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #999;
+}
+.fc .fc-item .fc-rq.data-v-5c7f672f {
+  width: 130rpx;
+}

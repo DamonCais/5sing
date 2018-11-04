@@ -1,4 +1,6 @@
 const axios = require('axios');
+var cheerio = require('cheerio');
+
 const request = axios.create({
     baseURL: `http://service.5sing.kugou.com`, // api的base_url
     timeout: 15000 // 请求超时时间
@@ -65,7 +67,7 @@ function getYcList(obj) {
 function getFcList(obj) {
     return doGet('h5/webRecommendNew', {
         p: obj.pageIndex || 1,
-        t: 1,
+        t: 2,
         l: obj.pageSize || 10,
         s: '编辑推荐',
         from: 'web',
@@ -90,6 +92,73 @@ function getSongUrl(obj) {
     })
 }
 
+async function getSongListByalbumId(obj) {
+    let songList = [];
+    let data = {};
+    try {
+        let url = `http://5sing.kugou.com/m/songlist/info/${obj.albumId}.html`;
+        let res = await axios.get(url);
+        let albumReg = /albumId:\'(.*)\'/;
+        let ownerReg = /ownerId:\'(.*)\'/;
+        let arr = res.data.match(ownerReg);
+        let arr2 = res.data.match(albumReg);
+
+        if (arr && arr2) {
+            let url2 = `http://5sing.kugou.com/${arr[1]}/dj/${arr2[1]}.html`
+            let res2 = await axios.get(url2);
+            var $ = cheerio.load(res2.data);
+            data.img = $('.dj_infos dt img').attr('src');
+            data.normalInfo = $('#normalIntro').text();
+            data.userName = $('.user_name').text();
+            let title = $('title').text();
+            data.title = title.split('-')[0];
+            $('.dj_songitems .p_rel').each(function(index, element) {
+                let title = $(this).find('.s_title').text();
+                let soner = $(this).find('.s_soner').text();
+                let playnum = $(this).find('.s_palynum').text();
+                let songId = $(this).find('.s_palynum').attr('id');
+                songList.push({
+                    title,
+                    soner,
+                    playnum,
+                    songId,
+                })
+            })
+        }
+
+    } catch (error) {}
+    data.songList = songList;
+    return { data: data };
+}
+
+async function getSongUrlById(obj) {
+    let songUrl = `http://service.5sing.kugou.com/song/getsongurl?songid=${obj.songId}&songtype=${obj.type||'fc'}&from=web&version=6.6.72&_=${new Date().getTime()}`
+    let res = await axios.get(songUrl);
+    let data = JSON.parse(res.data.slice(1, -1));
+    return { data: data }
+}
+
+
+async function getSongDetailById(obj) {
+    let songUrl = `http://5sing.kugou.com/m/Song/Detail/${obj.type||'fc'}/${obj.songId}.html`
+    let res = await axios.get(songUrl);
+    var $ = cheerio.load(res.data);
+    let lrc = $('#hidden-words').text();
+    // let lrcObj = {};
+    // var lyrics = lrc.split("\n");
+    // for (var i = 0; i < lyrics.length; i++) {
+    //     var timeReg = /\[(\d*)\:(\d*)\.(\d*)\]/;
+    //     var timeRegExpArr = lyrics[i].match(timeReg);
+    //     if (!timeRegExpArr) continue;
+    //     let word = lyrics[i].replace(timeReg, "");
+    //     let min = Number(timeRegExpArr[1]);
+    //     let sec = Number(timeRegExpArr[2]);
+    //     let time = 60 * min + sec;
+    //     lrcObj[time] = word;
+    // }
+    return { data: { lrc } }
+}
+
 module.exports = {
     getRecommendSongList,
     getMvlist,
@@ -97,5 +166,8 @@ module.exports = {
     getYcList,
     getFcList,
     getSongListSquareRecommended,
-    getSongUrl
+    getSongUrl,
+    getSongListByalbumId,
+    getSongUrlById,
+    getSongDetailById
 }

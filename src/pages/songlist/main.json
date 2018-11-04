@@ -1,0 +1,14 @@
+{
+    "usingComponents": {
+        "van-checkbox": "/static/vant/checkbox/index",
+        "van-checkbox-group": "/static/vant/checkbox-group/index",
+        "van-cell": "/static/vant/cell/index",
+        "van-cell-group": "/static/vant/cell-group/index",
+        "van-tabbar": "/static/vant/tabbar/index",
+        "van-tabbar-item": "/static/vant/tabbar-item/index",
+        "van-button": "/static/vant/button/index",
+        "van-panel": "/static/vant/panel/index"
+
+
+    }
+}

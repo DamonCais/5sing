@@ -1,0 +1,15 @@
+<template name="54ee8548">
+  <view class="_div data-v-c3c40b14 home">
+    <van-button bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_van-button data-v-c3c40b14">编辑</van-button>
+    <van-cell clickable title="全选" data-name="all" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_van-cell data-v-c3c40b14">
+      <van-checkbox wx:if="{{isEdit}}" value="{{checkAll}}" class="_van-checkbox data-v-c3c40b14"></van-checkbox>
+    </van-cell>
+    <van-checkbox-group value="{{result}}" class="_van-checkbox-group data-v-c3c40b14">
+      <van-cell-group class="_van-cell-group data-v-c3c40b14">
+        <van-cell title="{{item}}" wx:key="i" key="{{i}}" clickable data-name="{{item}}" bindtap="handleProxy" data-eventid="{{'2-'+i}}" data-comkey="{{$k}}" wx:for="{{list}}" wx:for-index="i" wx:for-item="item" class="_van-cell data-v-c3c40b14">
+          <van-checkbox wx:if="{{isEdit}}" name="{{item}}" class="_van-checkbox data-v-c3c40b14"></van-checkbox>
+        </van-cell>
+      </van-cell-group>
+    </van-checkbox-group>
+  </view>
+</template>

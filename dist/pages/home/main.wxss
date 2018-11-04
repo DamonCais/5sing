@@ -1,0 +1,70 @@
+
+.home .swiper-image.data-v-5f9d8311 {
+  width: 750rpx;
+  height: 300rpx;
+}
+.home ._h4.data-v-5f9d8311 {
+  font-size: 36rpx;
+  padding-left: 20rpx;
+  border-left: 10rpx solid greenyellow;
+}
+.recommend-list.data-v-5f9d8311 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.recommend-list .recommend-item.data-v-5f9d8311 {
+  width: 250rpx;
+  padding: 10rpx;
+  box-sizing: border-box;
+}
+.recommend-list .recommend-item ._img.data-v-5f9d8311 {
+  width: 225rpx;
+  height: 225rpx;
+}
+.recommend-list .recommend-item text.data-v-5f9d8311 {
+  display: -webkit-box;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mv-list.data-v-5f9d8311 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.mv-list .mv-item.data-v-5f9d8311 {
+  width: 375rpx;
+  padding: 10rpx;
+  box-sizing: border-box;
+  position: relative;
+}
+.mv-list .mv-item ._img.data-v-5f9d8311 {
+  width: 360rpx;
+  height: 240rpx;
+}
+.mv-list .mv-item .mv-info.data-v-5f9d8311 {
+  position: absolute;
+  top: 210rpx;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  padding: 0 30rpx;
+  font-size: 20rpx;
+}
+.mv-list .mv-item text.data-v-5f9d8311 {
+  display: block;
+  font-size: 24rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.mv-list .mv-item .mv-auth.data-v-5f9d8311 {
+  color: #999;
+}
