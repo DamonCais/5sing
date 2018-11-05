@@ -1,84 +1,147 @@
 require("../../common/manifest.js");
 require("../../common/vendor.js");
-global.webpackJsonp([6],{
+global.webpackJsonp([1],{
 
-/***/ 148:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 156:
+/***/ 100:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(157);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_song__ = __webpack_require__(158);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__getters__ = __webpack_require__(161);
-
-
-
-
-
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */]);
-
-var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
-    modules: {
-        song: __WEBPACK_IMPORTED_MODULE_2__modules_song__["a" /* default */]
-    },
-    getters: __WEBPACK_IMPORTED_MODULE_3__getters__["a" /* default */]
-});
-
-/* unused harmony default export */ var _unused_webpack_default_export = (store);
-
-/***/ }),
-
-/***/ 158:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var song = {
-    state: {
-        songList: wx.getStorageSync('songList') || []
-    },
-    mutations: {
-        SET_SONG_LIST: function SET_SONG_LIST(state, songList) {
-            state.songList = songList;
-            wx.setStorageSync('songList', songList);
-            // window.location.reload();
-        }
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "album"
+  }, [_c('div', {
+    staticClass: "album-info"
+  }, [_c('img', {
+    attrs: {
+      "src": _vm.album.img,
+      "alt": ""
     }
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (song);
-
-/***/ }),
-
-/***/ 161:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var getters = {
-    songList: function songList(state) {
-        return state.song.songList;
+  }), _vm._v(" "), _c('div', {
+    staticClass: "album-title"
+  }, [_c('h3', [_vm._v(_vm._s(_vm.album.title))]), _vm._v(" "), _c('h3', [_vm._v("创建者: " + _vm._s(_vm.album.userName))]), _vm._v(" "), _c('text', [_vm._v(_vm._s(_vm.album.normalInfo))])], 1)]), _vm._v(" "), _c('h4', [_vm._v("歌单歌曲(共" + _vm._s(_vm.songLen) + "首)")]), _vm._v(" "), _c('div', {
+    staticClass: "album-list"
+  }, [(!_vm.isEdit) ? _c('van-cell', {
+    attrs: {
+      "icon": "play",
+      "border": false,
+      "mpcomid": '0'
     }
-
-};
-/* harmony default export */ __webpack_exports__["a"] = (getters);
+  }, [_c('view', {
+    attrs: {
+      "eventid": '0'
+    },
+    on: {
+      "click": _vm.playAll
+    },
+    slot: "title"
+  }, [_c('span', {
+    staticClass: "van-cell-text"
+  }, [_vm._v("播放全部")])]), _vm._v(" "), _c('text', {
+    attrs: {
+      "eventid": '1'
+    },
+    on: {
+      "click": function($event) {
+        _vm.isEdit = true
+      }
+    }
+  }, [_vm._v("\n                编辑\n            ")])]) : _vm._e(), _vm._v(" "), (_vm.isEdit) ? _c('van-cell', {
+    attrs: {
+      "icon": "wap-nav",
+      "border": false,
+      "mpcomid": '1'
+    }
+  }, [_c('view', {
+    attrs: {
+      "eventid": '2'
+    },
+    on: {
+      "click": _vm.addToMylist
+    },
+    slot: "title"
+  }, [_c('span', {
+    staticClass: "van-cell-text"
+  }, [_vm._v("加入歌单")])]), _vm._v(" "), _c('text', {
+    attrs: {
+      "eventid": '3'
+    },
+    on: {
+      "click": function($event) {
+        _vm.isEdit = false
+      }
+    }
+  }, [_vm._v("\n                完成\n            ")])]) : _vm._e(), _vm._v(" "), (_vm.isEdit) ? _c('van-cell', {
+    attrs: {
+      "clickable": "",
+      "title": "全选",
+      "data-name": "all",
+      "eventid": '4',
+      "mpcomid": '3'
+    },
+    on: {
+      "click": _vm.toggleAll
+    }
+  }, [_c('van-checkbox', {
+    attrs: {
+      "value": _vm.checkAll,
+      "mpcomid": '2'
+    }
+  })], 1) : _vm._e(), _vm._v(" "), _c('scroll-view', {
+    staticClass: "album-items",
+    attrs: {
+      "scroll-y": ""
+    }
+  }, [_c('van-checkbox-group', {
+    attrs: {
+      "value": _vm.result,
+      "mpcomid": '7'
+    }
+  }, [_c('van-cell-group', {
+    attrs: {
+      "mpcomid": '6'
+    }
+  }, _vm._l((_vm.album.songList), function(item, i) {
+    return _c('van-cell', {
+      key: i,
+      attrs: {
+        "title": item.title,
+        "clickable": "",
+        "data-id": item.id,
+        "eventid": '5-' + i,
+        "mpcomid": '5-' + i
+      },
+      on: {
+        "click": _vm.toggle
+      }
+    }, [(_vm.isEdit) ? _c('van-checkbox', {
+      attrs: {
+        "name": item.id,
+        "mpcomid": '4-' + i
+      }
+    }) : _vm._e()], 1)
+  }))], 1)], 1)], 1)], 1)
+}
+var staticRenderFns = []
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-2e323bf3", esExports)
+  }
+}
 
 /***/ }),
 
-/***/ 67:
+/***/ 68:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(69);
 
 
 
@@ -87,18 +150,18 @@ app.$mount();
 
 /***/ }),
 
-/***/ 68:
+/***/ 69:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_1_1_4_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_1_1_4_mpvue_loader_lib_template_compiler_index_id_data_v_43c7afd3_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_1_1_4_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_1_1_4_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_1_1_4_mpvue_loader_lib_template_compiler_index_id_data_v_2e323bf3_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_1_1_4_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(100);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(148)
+  __webpack_require__(70)
 }
-var normalizeComponent = __webpack_require__(6)
+var normalizeComponent = __webpack_require__(5)
 /* script */
 
 /* template */
@@ -106,12 +169,12 @@ var normalizeComponent = __webpack_require__(6)
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-43c7afd3"
+var __vue_scopeId__ = "data-v-2e323bf3"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_1_1_4_mpvue_loader_lib_selector_type_script_index_0_index_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_1_1_4_mpvue_loader_lib_template_compiler_index_id_data_v_43c7afd3_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_1_1_4_mpvue_loader_lib_selector_type_template_index_0_index_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_1_1_4_mpvue_loader_lib_template_compiler_index_id_data_v_2e323bf3_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_1_1_4_mpvue_loader_lib_selector_type_template_index_0_index_vue__["a" /* default */],
   __vue_styles__,
   __vue_scopeId__,
   __vue_module_identifier__
@@ -127,9 +190,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-43c7afd3", Component.options)
+    hotAPI.createRecord("data-v-2e323bf3", Component.options)
   } else {
-    hotAPI.reload("data-v-43c7afd3", Component.options)
+    hotAPI.reload("data-v-2e323bf3", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -142,15 +205,22 @@ if (false) {(function () {
 /***/ }),
 
 /***/ 70:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 71:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store__ = __webpack_require__(156);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store__ = __webpack_require__(96);
 
 
 //
@@ -333,137 +403,67 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 71:
+/***/ 96:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "album"
-  }, [_c('div', {
-    staticClass: "album-info"
-  }, [_c('img', {
-    attrs: {
-      "src": _vm.album.img,
-      "alt": ""
-    }
-  }), _vm._v(" "), _c('div', {
-    staticClass: "album-title"
-  }, [_c('h3', [_vm._v(_vm._s(_vm.album.title))]), _vm._v(" "), _c('h3', [_vm._v("创建者: " + _vm._s(_vm.album.userName))]), _vm._v(" "), _c('text', [_vm._v(_vm._s(_vm.album.normalInfo))])], 1)]), _vm._v(" "), _c('h4', [_vm._v("歌单歌曲(共" + _vm._s(_vm.songLen) + "首)")]), _vm._v(" "), _c('div', {
-    staticClass: "album-list"
-  }, [(!_vm.isEdit) ? _c('van-cell', {
-    attrs: {
-      "icon": "play",
-      "border": false,
-      "mpcomid": '0'
-    }
-  }, [_c('view', {
-    attrs: {
-      "eventid": '0'
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_song__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__getters__ = __webpack_require__(99);
+
+
+
+
+
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */]);
+
+var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
+    modules: {
+        song: __WEBPACK_IMPORTED_MODULE_2__modules_song__["a" /* default */]
     },
-    on: {
-      "click": _vm.playAll
+    getters: __WEBPACK_IMPORTED_MODULE_3__getters__["a" /* default */]
+});
+
+/* unused harmony default export */ var _unused_webpack_default_export = (store);
+
+/***/ }),
+
+/***/ 98:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var song = {
+    state: {
+        songList: wx.getStorageSync('songList') || []
     },
-    slot: "title"
-  }, [_c('span', {
-    staticClass: "van-cell-text"
-  }, [_vm._v("播放全部")])]), _vm._v(" "), _c('text', {
-    attrs: {
-      "eventid": '1'
-    },
-    on: {
-      "click": function($event) {
-        _vm.isEdit = true
-      }
+    mutations: {
+        SET_SONG_LIST: function SET_SONG_LIST(state, songList) {
+            state.songList = songList;
+            wx.setStorageSync('songList', songList);
+            // window.location.reload();
+        }
     }
-  }, [_vm._v("\n                编辑\n            ")])]) : _vm._e(), _vm._v(" "), (_vm.isEdit) ? _c('van-cell', {
-    attrs: {
-      "icon": "wap-nav",
-      "border": false,
-      "mpcomid": '1'
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (song);
+
+/***/ }),
+
+/***/ 99:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var getters = {
+    songList: function songList(state) {
+        return state.song.songList;
     }
-  }, [_c('view', {
-    attrs: {
-      "eventid": '2'
-    },
-    on: {
-      "click": _vm.addToMylist
-    },
-    slot: "title"
-  }, [_c('span', {
-    staticClass: "van-cell-text"
-  }, [_vm._v("加入歌单")])]), _vm._v(" "), _c('text', {
-    attrs: {
-      "eventid": '3'
-    },
-    on: {
-      "click": function($event) {
-        _vm.isEdit = false
-      }
-    }
-  }, [_vm._v("\n                完成\n            ")])]) : _vm._e(), _vm._v(" "), (_vm.isEdit) ? _c('van-cell', {
-    attrs: {
-      "clickable": "",
-      "title": "全选",
-      "data-name": "all",
-      "eventid": '4',
-      "mpcomid": '3'
-    },
-    on: {
-      "click": _vm.toggleAll
-    }
-  }, [_c('van-checkbox', {
-    attrs: {
-      "value": _vm.checkAll,
-      "mpcomid": '2'
-    }
-  })], 1) : _vm._e(), _vm._v(" "), _c('scroll-view', {
-    staticClass: "album-items",
-    attrs: {
-      "scroll-y": ""
-    }
-  }, [_c('van-checkbox-group', {
-    attrs: {
-      "value": _vm.result,
-      "mpcomid": '7'
-    }
-  }, [_c('van-cell-group', {
-    attrs: {
-      "mpcomid": '6'
-    }
-  }, _vm._l((_vm.album.songList), function(item, i) {
-    return _c('van-cell', {
-      key: i,
-      attrs: {
-        "title": item.title,
-        "clickable": "",
-        "data-id": item.id,
-        "eventid": '5-' + i,
-        "mpcomid": '5-' + i
-      },
-      on: {
-        "click": _vm.toggle
-      }
-    }, [(_vm.isEdit) ? _c('van-checkbox', {
-      attrs: {
-        "name": item.id,
-        "mpcomid": '4-' + i
-      }
-    }) : _vm._e()], 1)
-  }))], 1)], 1)], 1)], 1)
-}
-var staticRenderFns = []
-render._withStripped = true
-var esExports = { render: render, staticRenderFns: staticRenderFns }
-/* harmony default export */ __webpack_exports__["a"] = (esExports);
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-43c7afd3", esExports)
-  }
-}
+
+};
+/* harmony default export */ __webpack_exports__["a"] = (getters);
 
 /***/ })
 
-},[67]);
+},[68]);
 //# sourceMappingURL=main.js.map

@@ -1,22 +1,22 @@
 
-.song-list.data-v-86a5f636 {
+.song-list.data-v-01b584c5 {
   position: fixed;
   top: 100rpx;
   bottom: 100rpx;
   width: 100%;
 }
-.song-list .song-items.data-v-86a5f636 {
+.song-list .song-items.data-v-01b584c5 {
   height: 100%;
 }
-.action-btns.data-v-86a5f636 {
+.action-btns.data-v-01b584c5 {
   position: fixed;
   bottom: 0;
   width: 100%;
 }
-.action-btns .btns.data-v-86a5f636 {
+.action-btns .btns.data-v-01b584c5 {
   display: flex;
 }
-.action-btns .btns .btn.data-v-86a5f636 {
+.action-btns .btns .btn.data-v-01b584c5 {
   flex: 1;
   width: 100%;
 }

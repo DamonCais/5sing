@@ -1,0 +1,43 @@
+
+.player.data-v-3ce2269a {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+.player .player-header.data-v-3ce2269a {
+  position: absolute;
+  top: 0;
+  bottom: 240rpx;
+  width: 100%;
+}
+.player .player-header .player-swiper.data-v-3ce2269a {
+  height: 100%;
+}
+.player .player-header .player-swiper .song-items.data-v-3ce2269a {
+  height: 100%;
+}
+.player .player-actions.data-v-3ce2269a {
+  position: absolute;
+  bottom: 0;
+  height: 240rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.player .player-actions .player-steps.data-v-3ce2269a {
+  font-size: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10rpx;
+}
+.player .player-actions .player-steps .slider.data-v-3ce2269a {
+  flex-grow: 3;
+}
+.player .player-actions .player-btns.data-v-3ce2269a {
+  padding: 0 10rpx;
+  display: flex;
+  justify-content: space-around;
+}

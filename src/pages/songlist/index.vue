@@ -82,7 +82,7 @@ export default {
 
   methods: {
     init() {
-      let arr = wx.getStorageSync("songList");
+      let arr = wx.getStorageSync("songList")||[];
       let songList = [];
       arr.map(item => {
         songList.push({
@@ -107,7 +107,10 @@ export default {
       this.songList = songList;
       this.checkAll = false;
     },
-    playAll() {},
+    playAll() {
+            const url = `../player/main`;
+      wx.navigateTo({ url });
+    },
     toggleAll() {
       this.checkAll = !this.checkAll;
     },
