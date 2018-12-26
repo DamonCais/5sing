@@ -26,15 +26,12 @@ songHrefs.forEach(href => {
 
 let calorieHrefs = [
     'getCalorie',
-    'getCalorieByKeyWord',
-    'getCalorieDetail'
 ];
 calorieHrefs.forEach(href => {
     router.get(`/${href}`, getCalorieApi(href))
 });
 let recipeHrefs = [
     'getMoreDiffStateRecipeList',
-    'getRecipeByKewWord',
     'getRecipeById'
 ];
 recipeHrefs.forEach(href => {

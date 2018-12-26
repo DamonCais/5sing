@@ -1,58 +1,82 @@
+// const api = require('./api');
+
+// var getApi = function(type) {
+//     return async function(ctx) {
+//         const obj = ctx.query
+//         console.log(obj);
+//         let res = await api[type](obj);
+//         ctx.body = res.data;
+//     }
+// }
+
+
+// function getFullUrl(url, params) {
+//     let query = "";
+//     for (let p in params) {
+//         if (typeof params[p] === "object") {
+//             query += `&${p}=${JSON.stringify(params[p])}`;
+//         } else {
+//             query += `&${p}=${params[p]}`;
+//         }
+//     }
+//     url += "?" + query.substring(1);
+//     return encodeURI(url);
+// }
 const axios = require('axios');
-const request = axios.create({
-    baseURL: `http://service.5sing.kugou.com`, // api的base_url
-    timeout: 15000 // 请求超时时间
-});
-
-function doGet(url, params) {
-    const href = getFullUrl(url, params);
-    return request({
-        url: href,
-        method: "get"
-    });
-}
-
-function getFullUrl(url, params) {
-    let query = "";
-    for (let p in params) {
-        if (typeof params[p] === "object") {
-            query += `&${p}=${JSON.stringify(params[p])}`;
+var cheerio = require('cheerio');
+(async() => {
+    let url = `https://m.food.hiyd.com/detail-mifan_zheng.html`;
+    let res = await axios.get(encodeURI(url));
+    var $ = cheerio.load(res.data);
+    let obj = {};
+    obj.image = $('.info-base img').attr('src');
+    obj.cont_h3 = $('.info-base .cont h3').text();
+    $('.info-base .cont p').each(function(index, element) {
+        let str = $(this).text();
+        let arr = str.split('：')
+        if (arr.length && arr[0] == '分类') {
+            obj.type = arr[1];
         } else {
-            query += `&${p}=${params[p]}`;
+            obj.suggest = arr[1];
         }
-    }
-    url += "?" + query.substring(1);
-    return encodeURI(url);
-}
-
-(async () => {
-    let res = await doGet('/song/getsongurl', {
-        songid: obj.songid,
-        songtype: obj.songtype,
-        from: 'web',
-        version: '6.6.72',
-        _: new Date().getTime()
     })
-    console.log(res.data);
+    obj.tips = $('.info-base .box-row3 p').text();
+    obj.baseBox = [];
+    $('.info-base .box-row2 div').each(function(index, element) {
+        obj.baseBox.push($(this).find('p').text());
+    })
+    obj.unit = [];
+    $('.info-unit .box-bd li').each(function(index, element) {
+        let unit = $(this).find('.unit').text();
+        let heat = $(this).find('.heat').text();
+        obj.unit.push({ unit, heat })
+
+    })
+    obj.unrt = [];
+    $('.info-nurt .box-bd li').each(function(index, element) {
+        let name = $(this).find('.name').text();
+        let count = $(this).find('.count').text();
+        obj.unrt.push({ name, count })
+
+    })
+
+    // console.log(res.data);
+    console.log(obj);
+
 })()
 
+// https://home.meishichina.com/ajax/ajax.php?ac=recipe&op=getMoreDiffStateRecipeList&classid=102&orderby=tag&page=2
 
-// 首页
-// http://service.5sing.kugou.com/h5/getRecommendSongList?jsoncallback=jQuery21404999839580991561_1541127397298&from=web&pageIndex=1&pageSize=4&type=1&_=1541127397299
-// http://service.5sing.kugou.com/h5/mvlist?jsoncallback=jQuery21404999839580991561_1541127397300&type=1&_=1541127397301
-// http://service.5sing.kugou.com/h5/getBanner?jsoncallback=jQuery21404999839580991561_1541127397296&from=web&id=26&_=1541127397297
-
-// 原创
-// http://service.5sing.kugou.com/h5/webRecommendNew?jsoncallback=jQuery21406082900414848147_1541128006606&p=1&t=1&l=10&s=%E7%BC%96%E8%BE%91%E6%8E%A8%E8%8D%90&from=web&_=1541128006607
+// ac: 'recipe',
+// op: 'getMoreDiffStateRecipeList',
+// page: 2
 
 
-// 翻唱
-// http://service.5sing.kugou.com/h5/webRecommendNew?jsoncallback=jQuery2140973158093502954_1541128072720&p=1&t=2&l=10&s=%E7%BC%96%E8%BE%91%E6%8E%A8%E8%8D%90&from=web&_=1541128072721
+// classid: 102,
+// 102热菜,202凉菜,57汤羹,59主食, 62小吃, 160西餐, 60烘焙, 69自制食材
+// orderby: 'tag',
 
-// 歌单
-// http://service.5sing.kugou.com/h5/getSongListSquareRecommended?jsoncallback=jQuery214005022355282169122_1541128088705&index=1&_=1541128088706
 
-// 视频
-// http://service.5sing.kugou.com/h5/mvlist?jsoncallback=jQuery21409230696795689353_1541128111899&type=2&_=1541128111900
-
-// http://service.5sing.kugou.com/song/getsongurl?songid=${arr[a]}&songtype=fc&from=web&version=6.6.72&_=${new Date().getTime()}
+// classid: 0
+// orderby: hot,new
+// hot最热,new最新
