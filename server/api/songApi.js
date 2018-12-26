@@ -128,28 +128,47 @@ async function getSongListByalbumId(obj) {
 
     } catch (error) {}
     data.songList = songList;
-    return { data: data };
+    return {
+        data: data
+    };
 }
 
 async function getSongUrlById(obj) {
     let songUrl = `http://service.5sing.kugou.com/song/getsongurl?songid=${obj.songId}&songtype=${obj.type||'fc'}&from=web&version=6.6.72&_=${new Date().getTime()}`
     let res = await axios.get(songUrl);
     let data = JSON.parse(res.data.slice(1, -1));
-    return { data: data }
+    return {
+        data: data
+    }
 }
 
 
 async function getSongDetailById(obj) {
-    let songUrl = `http://5sing.kugou.com/m/Song/Detail/${obj.type||'fc'}/${obj.songId}.html`
+    let songUrl = `http://service.5sing.kugou.com/song/getsongurl?songid=${obj.songId}&songtype=${obj.type||'fc'}&from=web&version=6.6.72&_=${new Date().getTime()}`
     let res = await axios.get(songUrl);
-    var $ = cheerio.load(res.data);
+    let data = JSON.parse(res.data.slice(1, -1));
+
+    let url = `http://5sing.kugou.com/m/Song/Detail/${obj.type||'fc'}/${obj.songId}.html`
+    let res2 = await axios.get(url);
+    var $ = cheerio.load(res2.data);
     let lrc = $('#hidden-words').text();
-    return { data: { lrc } }
+    // let lrcObj = {};
+    // var lyrics = lrc.split("\n");
+    // for (var i = 0; i < lyrics.length; i++) {
+    //     var timeReg = /\[(\d*)\:(\d*)\.(\d*)\]/;
+    //     var timeRegExpArr = lyrics[i].match(timeReg);
+    //     if (!timeRegExpArr) continue;
+    //     let word = lyrics[i].replace(timeReg, "");
+    //     let min = Number(timeRegExpArr[1]);
+    //     let sec = Number(timeRegExpArr[2]);
+    //     let time = 60 * min + sec;
+    //     lrcObj[time] = word;
+    // }
+    data.lrc = lrc;
+    return {
+        data: data
+    }
 }
-
-
-
-
 
 module.exports = {
     getRecommendSongList,

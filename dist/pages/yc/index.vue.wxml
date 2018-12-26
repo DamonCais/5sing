@@ -1,8 +1,8 @@
-<template name="721cdbb0">
-  <view class="_div data-v-22a2a588 yc">
-    <view class="_h4 data-v-22a2a588">推荐音乐</view>
-    <view wx:key="i" key="{{i}}" class="_div data-v-22a2a588 yc-item" wx:for="{{ycList}}" wx:for-index="i" wx:for-item="yc"><text class="_text data-v-22a2a588 yc-index">{{i}}</text>
-        <image src="{{yc.singerImage}}" alt class="_img data-v-22a2a588"></image>
-        <view class="_div data-v-22a2a588 yc-info"><text class="_text data-v-22a2a588 yc-name">{{yc.songName}}</text> <text class="_text data-v-22a2a588 yc-singer">{{yc.singer}}</text></view> <text class="_text data-v-22a2a588 yc-rq">{{yc.rqNum}}</text></view>
+<template name="16c3a31c">
+  <view class="_div data-v-76e6d5c8 yc">
+    <view class="_h4 data-v-76e6d5c8">推荐音乐</view>
+    <view wx:key="i" key="{{i}}" class="_div data-v-76e6d5c8 yc-item" wx:for="{{ycList}}" wx:for-index="i" wx:for-item="yc"><text class="_text data-v-76e6d5c8 yc-index">{{i}}</text>
+        <image src="{{yc.singerImage}}" alt class="_img data-v-76e6d5c8"></image>
+        <view class="_div data-v-76e6d5c8 yc-info"><text class="_text data-v-76e6d5c8 yc-name">{{yc.songName}}</text> <text class="_text data-v-76e6d5c8 yc-singer">{{yc.singer}}</text></view> <text class="_text data-v-76e6d5c8 yc-rq">{{yc.rqNum}}</text></view>
   </view>
 </template>

@@ -1,18 +1,18 @@
-<template name="16d86e99">
-  <view class="_div data-v-86a5f636">
-    <van-cell bindtap="handleProxy" value="{{isEdit?'完成':'编辑'}}" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_van-cell data-v-86a5f636">
-      <view wx:if="{{isEdit}}" catchtap="handleProxy" slot="title" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_view data-v-86a5f636">
-        <van-checkbox value="{{checkAll}}" class="_van-checkbox data-v-86a5f636">全选</van-checkbox>
+<template name="6be5b04a">
+  <view class="_div data-v-01b584c5">
+    <van-cell bindtap="handleProxy" value="{{isEdit?'完成':'编辑'}}" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_van-cell data-v-01b584c5">
+      <view wx:if="{{isEdit}}" catchtap="handleProxy" slot="title" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_view data-v-01b584c5">
+        <van-checkbox value="{{checkAll}}" class="_van-checkbox data-v-01b584c5">全选</van-checkbox>
       </view>
     </van-cell>
-    <view class="_div data-v-86a5f636 song-list">
-      <scroll-view class="_scroll-view data-v-86a5f636 song-items" scroll-y>
-        <van-checkbox-group value="{{result}}" class="_van-checkbox-group data-v-86a5f636">
-          <van-cell-group class="_van-cell-group data-v-86a5f636">
-            <van-cell bindtap="handleProxy" wx:key="i" key="{{i}}" clickable="{{isEdit}}" data-id="{{item.id}}" data-eventid="{{'2-'+i}}" data-comkey="{{$k}}" wx:for="{{songList}}" wx:for-index="i" wx:for-item="item" class="_van-cell data-v-86a5f636">
-              <view slot="title" class="_view data-v-86a5f636">
-                <van-checkbox wx:if="{{isEdit}}" name="{{item.id}}" class="_van-checkbox data-v-86a5f636">{{item.title}}</van-checkbox>
-                <view wx:else class="_view data-v-86a5f636">
+    <view class="_div data-v-01b584c5 song-list">
+      <scroll-view class="_scroll-view data-v-01b584c5 song-items" scroll-y>
+        <van-checkbox-group value="{{result}}" class="_van-checkbox-group data-v-01b584c5">
+          <van-cell-group class="_van-cell-group data-v-01b584c5">
+            <van-cell bindtap="handleProxy" wx:key="i" key="{{i}}" clickable="{{isEdit}}" data-id="{{item.id}}" data-eventid="{{'2-'+i}}" data-comkey="{{$k}}" wx:for="{{songList}}" wx:for-index="i" wx:for-item="item" class="_van-cell data-v-01b584c5">
+              <view slot="title" class="_view data-v-01b584c5">
+                <van-checkbox wx:if="{{isEdit}}" name="{{item.id}}" class="_van-checkbox data-v-01b584c5">{{item.title}}</van-checkbox>
+                <view wx:else class="_view data-v-01b584c5">
                   {{item.title}}
                 </view>
               </view>
@@ -21,11 +21,11 @@
         </van-checkbox-group>
       </scroll-view>
     </view>
-    <view class="_view data-v-86a5f636 action-btns">
-      <view class="_view data-v-86a5f636 btns">
-        <van-button wx:if="{{!isEdit}}" size="large" class="_van-button data-v-86a5f636 btn" bindtap="handleProxy" type="primary" data-eventid="{{'3'}}" data-comkey="{{$k}}">播放全部</van-button>
-        <van-button wx:if="{{isEdit}}" size="large" class="_van-button data-v-86a5f636 btn" type="warning">马上播放</van-button>
-        <van-button wx:if="{{isEdit}}" size="large" class="_van-button data-v-86a5f636 btn" bindtap="handleProxy" type="danger" data-eventid="{{'4'}}" data-comkey="{{$k}}">移除歌单</van-button>
+    <view class="_view data-v-01b584c5 action-btns">
+      <view class="_view data-v-01b584c5 btns">
+        <van-button wx:if="{{!isEdit}}" size="large" class="_van-button data-v-01b584c5 btn" bindtap="handleProxy" type="primary" data-eventid="{{'3'}}" data-comkey="{{$k}}">播放全部</van-button>
+        <van-button wx:if="{{isEdit}}" size="large" class="_van-button data-v-01b584c5 btn" type="warning">马上播放</van-button>
+        <van-button wx:if="{{isEdit}}" size="large" class="_van-button data-v-01b584c5 btn" bindtap="handleProxy" type="danger" data-eventid="{{'4'}}" data-comkey="{{$k}}">移除歌单</van-button>
       </view>
     </view>
   </view>
