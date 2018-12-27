@@ -69,13 +69,20 @@ async function getRecipeByKewWord(obj) {
     let arr = [];
     $('.ui_list_1 ul li').each(function(index, element) {
         let mainingredient = $(this).find('.detail .subcontent').text();
-        mainingredient = mainingredient.replace('原料：', '');
-
+        let href = $(this).find('h4 a').attr('href');
         let username = $(this).find('.detail .left a').text();
         let title = $(this).find('.detail h4').text();
         let cover = $(this).find('.pic img').attr('data-src');
-        if (mainingredient) {
+        console.log(mainingredient);
+        let reg = /recipe-(\d*?).html/;
+
+        if (href.match(reg)) {
+            mainingredient = mainingredient.replace('原料：', '');
+
+            let id = (reg.exec(href)[1]).replace(/\s/g, '');
+
             arr.push({
+                id,
                 mainingredient,
                 username,
                 title,
