@@ -6,7 +6,8 @@ var request = require('request');
 const {
     getSongApi,
     getCalorieApi,
-    getRecipeApi
+    getRecipeApi,
+    getTvApi
 } = require('./controllers')
 let songHrefs = [
     'getRecommendSongList',
@@ -41,7 +42,7 @@ recipeHrefs.forEach(href => {
     router.get(`/${href}`, getRecipeApi(href))
 });
 
-
+router.get(`/getTv`,getTvApi())
 
 // router.post(`/postImg`, async(ctx) => {
 //     let file = ctx.request.files.file
